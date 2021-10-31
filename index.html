@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Documentación Técnica</title>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <header>DOM Documentación</header>
+    <ul>
+      <li><a class="nav-link" href="#Introducción">Introducción</a></li>
+      <li>
+        <a class="nav-link" href="#Interfaces_del_DOM">Interfaces del DOM</a>
+      </li>
+      <li>
+        <a class="nav-link" href="#Interfaces_principales_del_DOM">Interfaces principales del DOM</a>
+      </li>
+      <li><a class="nav-link" href="#Localización_de_elementos_DOM_mediante_selectores">Localización de elementos DOM
+          mediante selectores</a></li>
+      <li><a class="nav-link" href="#Eventos">Eventos</a></li>
+      <li><a class="nav-link" href="#Interfaz_Document">Interfaz Document</a></li>
+      <li><a class="nav-link" href="#Clase_Element">Clase Element</a></li>
+      <li><a class="nav-link" href="#Referencia">Referencia</a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id="Introducción">
+      <header>Introducción</header>
+      <article>
+        <p>
+          El DOM (Document Object Model en español Modelo de Objetos del Documento) es una API definida para representar
+          e
+          interactuar con cualquier documento HTML o XML. El DOM es un modelo de documento que se carga en el navegador
+          web y que
+          representa el documento como un árbol de nodos, en donde cada nodo representa una parte del documento (puede
+          tratarse de
+          un elemento, una cadena de texto o un comentario).
+
+          El DOM es una de las APIs más usadas en la Web, pues permite ejecutar código en el navegador para acceder e
+          interactuar
+          con cualquier nodo del documento. Estos nodos pueden crearse, moverse o modificarse. Pueden añadirse a estos
+          nodos
+          manejadores de eventos (event listeners en inglés) que se ejecutarán/activarán cuando ocurra el evento
+          indicado en este
+          manejador.
+
+          El DOM surgió a partir de la implementación de JavaScript en los navegadores. A esta primera versión también
+          se la
+          conoce como DOM 0 o "Legacy DOM". Hoy en día el grupo WHATWG es el encargado de actualizar el estándar de DOM.
+        </p>
+
+        <p>
+          El DOM no es un lenguaje de programación, pero sin él, el lenguaje JavaScript no tendría ningún modelo o
+          noción de
+          páginas web, documentos HTML, documentos XML y sus componentes. El documento en su conjunto, el
+          encabezado, las
+          tablas dentro del documento, los encabezados de tabla, el texto dentro de las celdas de la tabla y todos los
+          demás
+          elementos de un documento son partes del modelo de objetos de documento para ese documento. Todos ellos pueden
+          ser
+          accedidos y manipulados usando el DOM y un lenguaje de scripting como JavaScript.
+
+          El DOM no es parte del lenguaje JavaScript, sino que es una API web utilizada para crear sitios web.
+          JavaScript también
+          se puede utilizar en otros contextos. Por ejemplo, Node.js ejecuta programas JavaScript en un equipo, pero
+          proporciona
+          un conjunto diferente de API, y la API DOM no es una parte central del tiempo de ejecución .js Node.
+        </p>
+        <p>
+          No tiene que hacer nada especial para comenzar a usar el DOM. La API se utiliza directamente en JavaScript
+          desde lo que
+          se llama un <em>script</em>, un programa ejecutado por un navegador.
+
+          Al crear un <em>script</em>, ya sea en línea en un elemento o incluido en la página web, puede comenzar
+          inmediatamente
+          a utilizar
+          la API para que el documento o los objetos de ventana manipulen el documento en sí, o cualquiera de los
+          diversos
+          elementos de la página web (los elementos descendientes del documento).
+        </p>
+      </article>
+    </section>
+    <section class="main-section" id="Interfaces_del_DOM">
+      <header>Interfaces del DOM</header>
+      <article>
+        <p>Esta es la lista de todas las interfaces pertenecientes al API del DOM</p>
+
+        <ul>
+          <li>Attr</li>
+          <li>CDATASection</li>
+          <li>CharacterData</li>
+          <li>Comment</li>
+          <li>CustomEvent</li>
+          <li>Document</li>
+          <li>DocumentFragment</li>
+          <li>DocumentType</li>
+          <li>DOMException</li>
+          <li>DOMImplementation</li>
+          <li>DOMString</li>
+          <li>DOMTimeStamp</li>
+          <li>DOMStringList</li>
+          <li>DOMTokenList</li>
+          <li>Element</li>
+          <li>Event</li>
+          <li>EventTarget</li>
+          <li>HTMLCollection</li>
+          <li>MutationObserver</li>
+          <li>MutationRecord</li>
+          <li>NamedNodeMap</li>
+          <li>Node</li>
+          <li>NodeFilter</li>
+          <li>NodeIterator</li>
+          <li>NodeList</li>
+          <li>ProcessingInstruction</li>
+          <li>Selection (Esta en experimentación)</li>
+          <li>Range</li>
+          <li>Text</li>
+          <li>TextDecoder (Esta en experimentación)</li>
+          <li>TextEncoder (Esta en experimentación)</li>
+          <li>TimeRanges</li>
+          <li>TreeWalker</li>
+          <li>URL</li>
+          <li>Window</li>
+          <li>Worker</li>
+          <li>XMLDocument (Esta en experimentación)</li>
+        </ul>
+      </article>
+    </section>
+    <section class="main-section" id="Interfaces_principales_del_DOM">
+      <header>Interfaces principales del DOM</header>
+      <article>
+        <p>
+          En esta sección se enumeran algunas de las interfaces más utilizadas en el DOM. La idea no es describir lo que
+          hacen
+          estas API aquí, sino darle una idea de los tipos de métodos y propiedades que verá muy a menudo al usar el
+          DOM.
+        </p>
+
+        <p>
+          Estos son los objetos cuyas interfaces generalmente se utilizan con mayor frecuencia en programación
+          utilizando la API del DOM.
+        </p>
+        <ul>
+          <li>document.querySelector(selector)</li>
+          <li>document.querySelectorAll(name)</li>
+          <li>document.createElement(name)</li>
+          <li>appendChild(node)</li>
+          <li>innerHTML</li>
+          <li>element.style</li>
+          <li>element.setAttribute(name)</li>
+          <li>element.getAttribute(name)</li>
+          <li>element.addEventListener(evento,listener)</li>
+          <li>window.content</li>
+          <li>GlobalEventHandlers/onload</li>
+          <li>window.scrollTo()</li>
+        </ul>
+      </article>
+    </section>
+    <section class="main-section" id="Localización_de_elementos_DOM_mediante_selectores">
+      <header>Localización de elementos DOM mediante selectores</header>
+      <article>
+        <p>
+          La API selectores proporciona métodos que hacen que sea rápido y fácil recuperar los nodos element del DOM al
+          coincidir
+          con un conjunto de selectores. Esto es mucho más rápido que las técnicas anteriores, en las que era necesario,
+          por
+          ejemplo, usar un bucle en el código JavaScript para localizar los elementos específicos que necesitaba
+          encontrar.
+        </p>
+        <p>
+          Esta especificación agrega dos métodos nuevos a cualquier objeto que implemente las interfaces Document,
+          DocumentFragment o Element.
+        </p>
+        <p>
+          querySelector()
+        </p>
+        <p>
+          Devuelve el primer nodo Element coincidente dentro del subárbol del nodo. Si no se encuentra ningún nodo
+          coincidente, se
+          devuelve null.
+        </p>
+        <p>
+          querySelectorAll()
+        </p>
+        <p>
+          Devuelve un NodeList que contiene todos los nodos coincidentes dentro del subárbol del nodo, o un vacío si no
+          se
+          encuentran coincidencias.
+        </p>
+        <p>
+          <strong>Selectores</strong>
+        </p>
+        <p>
+          Los métodos de selección aceptan selectores para determinar qué elemento o elementos deben devolverse. Esto
+          incluye
+          listas de selectores para que pueda agrupar varios selectores en una sola consulta.
+
+          Para proteger la privacidad del usuario, algunas pseudoclases no son compatibles o se comportan de manera
+          diferente. Por
+          ejemplo, :visited no devolverá coincidencias y :link se trata como :any-link.
+
+          Solo se pueden seleccionar elementos, por lo que no se admiten pseudoelementos.
+        </p>
+
+        <h2>Ejemplos</h2>
+
+        <p>Para seleccionar todos los elementos de párrafo (p) de un documento cuyas clases incluyen warning o note,
+          puede hacer lo
+          siguiente:</p>
+
+        <code>const special = document.querySelectorAll("p.warning, p.note");</code>
+
+        <p>También puede consultar por ID. Por ejemplo:</p>
+
+        <code>const el = document.querySelector("#main, #basic, #exclamation");</code>
+
+      </article>
+    </section>
+    <section class="main-section" id="Eventos">
+      <header>Eventos</header>
+      <p>
+        En el caso de la Web, los eventos se activan dentro de la ventana del navegador y tienden a adjuntarse a un
+        elemento
+        específico que reside en ella: esto puede ser un solo elemento, un conjunto de elementos, el documento HTML
+        cargado en
+        la pestaña actual o toda la ventana del navegador. Hay muchos tipos diferentes de eventos que pueden ocurrir.
+        Por
+        ejemplo:
+      </p>
+
+      <ul>
+        <li>El usuario selecciona un determinado elemento o coloca el cursor
+          sobre un
+          determinado elemento.</li>
+        <li>El usuario elige una tecla en el teclado.</li>
+        <li>El usuario redimensiona o cierra la ventana del navegador.</li>
+        <li>Una página web termina de cargarse.</li>
+        <li>Se envía un formulario.</li>
+        <li>Un vídeo se reproduce, se pausa o finaliza.</li>
+        <li>Se produce un error.</li>
+      </ul>
+
+      <p>
+        Puede deducir de esto que hay muchos eventos a los que se
+        puede
+        responder.
+      </p>
+
+      <p>
+        Cada evento disponible tiene un controlador de eventos,que es un bloque de código (generalmente una función de
+        JavaScript que usted como programador crea) que se ejecuta cuando se dispara el evento. Cuando se define un
+        bloque de
+        código de este tipo para ejecutarse en respuesta a un evento, decimos que estamos registrando un controlador de
+        eventos.
+        Nota: Los controladores de eventos a veces se llaman oyentes de eventos: son prácticamente intercambiables para
+        nuestros
+        propósitos, aunque estrictamente hablando, funcionan juntos. El agente de escucha, escucha el evento que ocurre
+        y
+        el
+        controlador es el código que se ejecuta en respuesta a que ocurra.
+      </p>
+
+      <h2>Ejemplos</h2>
+
+      <p>Controladores de eventos en línea: no los use</p>
+
+      <code>&lt;button onclick="bgChange()"> Press me &lt;/button>
+      </code>
+      <code>function bgChange() {
+            const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            document.body.style.backgroundColor = rndCol;
+          }        
+      </code>
+
+      <p>Controladores de eventos semanticos</p>
+
+      <code>&lt;button> Press me &lt;/button></code>
+
+      <code>const btn = document.querySelector('button');      
+      btn.onclick = function() {
+        const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        document.body.style.backgroundColor = rndCol;
+      }</code>
+
+      <p>Controladores de eventos multiples</p>
+
+      <p>El mecanismo moderno para agregar controladores de eventos es el método addEventListener(). Usándolo, podríamos
+        reescribir nuestro ejemplo de color aleatorio para que se vea así:</p>
+
+      <code>&lt;button> Press me &lt;/button></code>
+
+      <code>const btn = document.querySelector('button');
+
+      function bgChange() {
+        const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        document.body.style.backgroundColor = rndCol;
+      }      
+
+      btn.addEventListener('click', bgChange);</code>
+
+    </section>
+
+    <section class="main-section" id="Interfaz_Document">
+      <header>Interfaz Document</header>
+      <article>
+        <p>
+          La interfaz document representa cualquier página web cargada en el navegador y sirve como punto de entrada
+          al
+          contenido de la página web, que es el árbol DOM.
+
+          El árbol DOM incluye elementos como <em>cabeza</em> y <em>cuerpo</em>,entre muchos otros. Proporciona
+          funcionalidad global al
+          documento, como obtener la URL de la página y crear nuevos elementos en el documento.
+        </p>
+
+        <p>
+          La interfaz describe las propiedades y métodos comunes para cualquier tipo de documento. Dependiendo del tipo
+          de
+          documento (por ejemplo, HTML, XML,SVG, ...), una API más grande está disponible: los documentos HTML, servidos
+          con el
+          tipo de contenido, también implementan la interfaz HTMLDocument, mientras que los documentos XML y SVG
+          implementan la
+          interfaz XMLDocument.
+        </p>
+
+        <h2>Constructor</h2>
+
+        <p>
+          Document():
+          Crea un nuevo objeto Document.
+        </p>
+
+        <h2>Propiedades</h2>
+
+        <p>
+          <em>
+            Document hereda propiedades de su interfaz principal, Node, y por extensión, del elemento primario de esa
+            interfaz,
+            EventTarget.
+          </em>
+        </p>
+
+        <p>
+          Document.activeElement:
+          Devuelve el elemento que actualmente tiene foco.
+        </p>
+
+        <p>
+          Document.body:
+          Devuelve el body del documento actual.
+        </p>
+
+        <p>
+          Document.characterSet:
+          Devuelve el juego de caracteres que utiliza el documento.
+        </p>
+
+        <p>
+          Document.childElementCount:
+          Devuelve el número de elementos secundarios del documento actual.
+        </p>
+
+        <p>
+          Document.children:
+          Devuelve los elementos secundarios del documento actual.
+        </p>
+
+        <p>
+          Document.doctype:
+          Devuelve la definición de tipo de documento (DTD) del documento actual.
+        </p>
+
+        <p>
+          Document.documentElement:
+          Devuelve el elemento que es un elemento secundario directo del documento. Para los documentos HTML,
+          normalmente es el
+          objeto HTML que representa la etiqueta html del documento. </p>
+
+        <p>
+          Document.documentURI:
+          Devuelve la ubicación del documento como una cadena.
+        </p>
+
+        <p>
+          Document.embeds:
+          Devuelve una lista de los elementos incrustados en el documento actual.
+        </p>
+
+        <p>
+          Document.firstElementChild:
+          Devuelve el primer elemento secundario del documento actual.
+        </p>
+
+        <p>
+          Document.fonts:
+          Devuelve la interfaz FontFaceSet del documento actual.
+        </p>
+
+        <p>
+          Document.forms:
+          Devuelve una lista de los
+          elementos form del documento actual.
+        </p>
+
+        <p>
+          Document.fullscreenElement:
+          El elemento que se encuentra actualmente en modo de pantalla completa para este documento.
+        </p>
+
+        <p>
+          Document.head:
+          Devuelve el elemento head del documento actual.
+        </p>
+
+        <p>
+          Document.hidden:
+          Devuelve un valor booleano que indica si la página se considera oculta o no.
+        </p>
+
+        <p>
+          Document.images:
+          Devuelve una lista de las imágenes del documento actual.
+        </p>
+
+        <p>
+          Document.lastElementChild:
+          Devuelve el último elemento secundario del documento actual.
+        </p>
+
+        <p>
+          Document.links:
+          Devuelve una lista de todos los hipervínculos del documento.
+        </p>
+
+        <p>
+          Document.plugins:
+          Devuelve una lista de los plugins disponibles.
+        </p>
+
+        <p>
+          Document.scripts:
+          Devuelve todos los
+          elementos script del documento.
+        </p>
+
+        <p>
+          Document.styleSheets:
+          Devuelve una StyleSheetList de objetos CSSStyleSheet para hojas de estilos vinculadas explícitamente o
+          incrustadas en un
+          documento.
+        </p>
+
+        <h3>Controladores de eventos</h3>
+
+        <p>
+          <em>
+            La interfaz document se amplía con controladores de eventos adicionales definidos en GlobalEventHandlers.
+          </em>
+        </p>
+
+        <p>
+          Document.onfullscreenchange:
+          Es un controlador de eventos que representa el código al que se va a llamar cuando se genera el
+          evento fullscreenchange.
+        </p>
+
+        <p>
+          Document.onfullscreenerror:
+          Es un controlador de eventos que representa el código al que se va a llamar cuando se genera el
+          evento fullscreenerror.
+        </p>
+
+        <p>
+          Document.onvisibilitychange:
+          Es un controlador de eventos que representa el código al que se va a llamar cuando se genera el evento
+          visibilitychange.
+        </p>
+
+        <h3>Métodos</h3>
+
+        <p>
+          <em>
+            Al igual que las propiedades Document hereda metodos de su interfaz principal, Node, y por extensión, del
+            elemento primario de esa
+            interfaz,
+            EventTarget.
+          </em>
+        </p>
+
+        <p>
+          Document.adoptNode():
+          Adoptar nodo de un documento externo.
+        </p>
+
+
+        <p>
+          Document.append():
+          Inserta un conjunto de objetos Node u objetos DOMString después del último elemento secundario del documento.
+        </p>
+
+        <p>
+          Document.createAttribute():
+          Crea un nuevo objeto Attr y lo devuelve.
+        </p>
+
+        <p>
+          Document.createCDATASection():
+          Crea un nuevo nodo CDATA y lo devuelve.
+        </p>
+
+        <p>
+          Document.createComment():
+          Crea un nuevo nodo de comentario y lo devuelve.
+        </p>
+
+        <p>
+          Document.createDocumentFragment():
+          Crea un nuevo fragmento de documento.
+        </p>
+
+        <p>
+          Document.createElement():
+          Crea un nuevo elemento con el nombre de etiqueta dado.
+        </p>
+
+        <p>
+          Document.createEvent():
+          Crea un objeto de evento.
+        </p>
+
+        <p>
+          Document.createTextNode():
+          Crea un nodo de texto.
+        </p>
+
+        <p>
+          Document.getAnimations():
+          Devuelve una matriz de todos los objetos Animation actualmente en vigor, cuyos elementos de destino son
+          descendientes
+          del archivo.
+        </p>
+
+        <p>
+          Document.getElementById():
+          Devuelve una referencia de objeto al elemento identificado.
+        </p>
+
+        <p>
+          Document.getElementsByClassName():
+          Devuelve una lista de elementos con el nombre de clase dado.
+        </p>
+
+        <p>
+          Document.getElementsByTagName():
+          Devuelve una lista de elementos con el nombre de etiqueta dado.
+        </p>
+
+        <p>
+          Document.getSelection():
+          Devuelve un objeto Selection que representa el intervalo de texto seleccionado por el usuario o la posición
+          actual del
+          intervalo de instrucciones.
+        </p>
+
+        <p>
+          Document.importNode():
+          Devuelve un clon de un nodo de un documento externo.
+        </p>
+
+        <p>
+          Document.prepend():
+          Inserta un conjunto de objetos Node u objetos DOMString antes del primer elemento secundario del documento.
+        </p>
+
+        <p>
+          Document.querySelector():
+          Devuelve el primer nodo Elemento del documento, en orden de documento, que coincide con los selectores
+          especificados.
+        </p>
+
+        <p>
+          Document.querySelectorAll():
+          Devuelve una lista de todos los nodos Element del documento que coinciden con los selectores especificados.
+        </p>
+
+        <p>
+          Document.replaceChildren():
+          Reemplaza los elementos hijos existentes de un documento por un nuevo conjunto especificado de elementos
+          hijos.
+        </p>
+
+        <p>
+          Document.requestStorageAccess():
+          Devuelve una promesa que se resuelve si se concedió el acceso al almacenamiento de origen y se rechaza si se
+          denegó el
+          acceso.
+        </p>
+
+        <h2>Eventos</h2>
+
+        <h3>A continuación se nombraran algunos de los eventos mas usados</h3>
+
+        <p>
+          scroll:
+          Se activa cuando se ha desplazado la vista del documento o un elemento.
+        </p>
+
+        <p>
+          select:
+          Se activa cuando se ha seleccionado algún texto.
+        </p>
+
+        <p>
+          wheel:
+          Se activa cuando el usuario gira un botón de rueda en un dispositivo señalador (normalmente un ratón).
+        </p>
+
+        <p>
+          securitypolicyviolation:
+          Se activa cuando se infringe una política de seguridad de contenido.
+        </p>
+
+        <h3>Eventos de animación</h3>
+
+        <p>
+          animationcancel:
+          Se activa cuando una animación aborta inesperadamente.
+        </p>
+
+        <p>
+          animationend:
+          Se activa cuando una animación se ha completado normalmente.
+        </p>
+
+        <p>
+          animationiteration:
+          Se activa cuando se ha completado una iteración de animación.
+        </p>
+
+        <p>
+          animationstart:
+          Se activa cuando se inicia una animación.
+        </p>
+
+        <h3>Eventos del portapapeles</h3>
+
+        <p>
+          copy:
+          Se activa cuando el usuario inicia una acción de copia a través de la interfaz de usuario del navegador.
+        </p>
+
+        <p>
+          cut:
+          Se activa cuando el usuario inicia una acción de corte a través de la interfaz de usuario del navegador.
+        </p>
+
+        <p>
+          paste
+          Se activa cuando el usuario inicia una acción de pegado a través de la interfaz de usuario del navegador.
+        </p>
+
+        <h3>Eventos de arrastrar y soltar</h3>
+
+        <p>
+          drag:
+          Se dispara cada pocos cientos de milisegundos mientras el usuario arrastra un elemento o una selección de
+          texto.
+        </p>
+
+        <p>
+          dragend:
+          Se activa cuando finaliza una operación de arrastre (soltando un botón del ratón o pulsando la tecla de
+          escape).
+        </p>
+
+        <p>
+          dragenter:
+          Se activa cuando un elemento arrastrado o una selección de texto entra en un destino de succión válido.
+        </p>
+
+        <p>
+          dragleave:
+          Se activa cuando un elemento arrastrado o una selección de texto deja un destino de entrega válido.
+        </p>
+
+        <p>
+          dragover:
+          Se activa cuando se arrastra un elemento o una selección de texto sobre un destino de entrega válido (cada
+          pocos cientos
+          de milisegundos).
+        </p>
+
+        <p>
+          dragstart:
+          Se activa cuando el usuario comienza a arrastrar un elemento o una selección de texto.
+        </p>
+
+        <p>
+          drop:
+          Se activa cuando se deja caer un elemento o una selección de texto en un destino de entrega válido.
+        </p>
+
+        <h3>Eventos a pantalla completa</h3>
+
+        <p>
+          fullscreenchange:
+          Se activa cuando las transiciones entran o salen del modo de pantalla completa.
+        </p>
+
+        <p>
+          fullscreenerror:
+          Se activa si se produce un error al intentar entrar o salir del modo de pantalla completa.
+        </p>
+
+        <h3>Eventos del teclado</h3>
+
+        <p>
+          keydown:
+          Se activa cuando se presiona una tecla.
+        </p>
+
+        <p>
+          keypress:
+          Se activa cuando se presiona hacia abajo una tecla que produce un valor de carácter.
+        </p>
+
+        <p>
+          keyup:
+          Se activa cuando se suelta una clave.
+        </p>
+
+        <h3>Eventos del raton</h3>
+
+        <p>
+          auxclick:
+          Se activa cuando se ha presionado y liberado un botón de dispositivo señalador no primario (por ejemplo,
+          cualquier botón
+          del mouse que no sea el botón izquierdo) en un elemento.
+        </p>
+
+        <p>
+          click:
+          Se activa cuando se presiona y suelta un botón del dispositivo señalador (por ejemplo, el botón principal de
+          un mouse)
+          en un solo elemento.
+        </p>
+
+        <p>
+          dblclick:
+          Se activa cuando se hace clic dos veces en un botón de dispositivo señalador (por ejemplo, el botón principal
+          de un
+          mouse) en un solo elemento.
+        </p>
+
+        <p>
+          mousedown:
+          Se activa cuando se presiona un botón de dispositivo señalador en un elemento.
+        </p>
+
+        <p>
+          mouseenter:
+          Se activa cuando un dispositivo señalador (generalmente un mouse) se mueve sobre el elemento que tiene el
+          oyente
+          conectado.
+        </p>
+
+        <p>
+          mouseleave:
+          Se activa cuando el puntero de un dispositivo señalador (generalmente un mouse) se mueve fuera de un elemento
+          que tiene
+          el oyente conectado a él.
+        </p>
+
+        <p>
+          mousemove:
+          Se activa cuando un dispositivo señalador (generalmente un mouse) se mueve mientras está sobre un elemento.
+        </p>
+
+        <p>
+          mouseout:
+          Se activa cuando un dispositivo señalador (generalmente un mouse) se mueve fuera del elemento al que está
+          conectado el
+          oyente o de uno de sus hijos.
+        </p>
+
+        <p>
+          mouseover:
+          Se activa cuando un dispositivo señalador se mueve sobre el elemento al que está conectado el oyente o sobre
+          uno de sus
+          hijos.
+        </p>
+
+        <p>
+          mouseup:
+          Se activa cuando se suelta un botón de dispositivo señalador en un elemento.
+        </p>
+
+        <p>
+          webkitmouseforcechanged:
+          Se dispara cada vez que la cantidad de presión cambia en la pantalla táctil del trackpad.
+        </p>
+
+        <p>
+          webkitmouseforcedown:
+          Se dispara después del evento de ratón hacia abajo tan pronto como se haya aplicado suficiente presión para
+          calificar
+          como un "clic de fuerza".
+        </p>
+
+        <p>
+          webkitmouseforcewillbegin:
+          Se ha disparado antes del evento mousedown.
+        </p>
+
+        <p>
+          webkitmouseforceup:
+          Se dispara después del evento webkitmouseforcedown tan pronto como la presión se ha reducido lo suficiente
+          como para
+          finalizar el "clic de fuerza".
+        </p>
+
+        <h3>Eventos de carga y descarga</h3>
+
+        <p>
+          DOMContentLoaded:
+          Se activa cuando el documento se ha cargado y analizado por completo, sin esperar a que las hojas de estilo,
+          las
+          imágenes y los subtramos terminen de cargarse.
+        </p>
+
+        <p>
+          readystatechange:
+          Se activa cuando el atributo readyState de un documento ha cambiado.
+        </p>
+
+        <h3>Eventos de puntero</h3>
+
+        <p>
+          gotpointercapture:
+          Se activa cuando un elemento captura un puntero mediante setPointerCapture().
+        </p>
+
+        <p>
+          lostpointercapture:
+          Se dispara cuando se libera un puntero capturado.
+        </p>
+
+        <p>
+          pointercancel:
+          Se activa cuando se cancela un evento de puntero.
+        </p>
+
+        <p>
+          pointerdown:
+          Se activa cuando un puntero se activa.
+        </p>
+
+        <p>
+          pointerenter:
+          Se activa cuando un puntero se mueve a los límites de la prueba de acierto de un elemento o uno de sus
+          descendientes.
+        </p>
+
+        <p>
+          pointerleave:
+          Se activa cuando un puntero se mueve fuera de los límites de la prueba de acierto de un elemento.
+        </p>
+
+        <p>
+          pointerlockchange:
+          Se activa cuando el puntero está bloqueado/desbloqueado.
+        </p>
+
+        <p>
+          pointerlockerror:
+          Se disparó al bloquear el puntero falló.
+        </p>
+
+        <p>
+          pointermove:
+          Se activa cuando un puntero cambia de coordenadas.
+        </p>
+
+        <p>
+          pointerout:
+          Se activa cuando un puntero se mueve fuera de los límites de la prueba de acierto de un elemento (entre otras
+          razones).
+        </p>
+
+        <p>
+          pointerover:
+          Se activa cuando un puntero se mueve a los límites de prueba de acierto de un elemento.
+        </p>
+
+        <p>
+          pointerup:
+          Se activa cuando un puntero ya no está activo.
+        </p>
+
+        <h3>Eventos de selección</h3>
+
+        <p>
+          selectionchange:
+          Se activa cuando se cambia la selección de texto actual en un documento.
+        </p>
+
+        <p>
+          selectstart:
+          Se activa cuando el usuario comienza una nueva selección.
+        </p>
+
+        <h3>Eventos tactiles</h3>
+
+        <p>
+          touchcancel:
+          Se activa cuando uno o más puntos de contacto se han interrumpido de una manera específica de la
+          implementación (por
+          ejemplo, se crean demasiados puntos de contacto).
+        </p>
+
+        <p>
+          touchend:
+          Se dispara cuando se retiran uno o más puntos de contacto de la superficie táctil.
+        </p>
+
+        <p>
+          touchmove:
+          Se dispara cuando uno o más puntos de contacto se mueven a lo largo de la superficie táctil.
+        </p>
+
+        <p>
+          touchstart:
+          Se dispara cuando se colocan uno o más puntos de contacto en la superficie táctil.
+        </p>
+
+      </article>
+    </section>
+
+    <section class="main-section" id="Clase_Element">
+      <header>Clase Element</header>
+      <article>
+        <p>
+          Es la clase base más general de la que heredan todos los objetos element (es decir, objetos que representan
+          elementos)
+          de un documento. Sólo tiene métodos y propiedades comunes a todo tipo de elementos.
+        </p>
+
+        <h2>Propiedades</h2>
+
+        <p>
+          <em>
+            Element también hereda de las interfaces Node y EventTarget.
+          </em>
+        </p>
+
+        <h3>A continuación se nombraran algunas de las propiedades</h3>
+
+        <p>Element.attributes:
+          Devuelve un objeto NamedNodeMap que contiene los atributos asignados del elemento HTML correspondiente.</p>
+
+        <p>Element.childElementCount:
+          Devuelve el número de elementos secundarios de este elemento.</p>
+
+        <p>Element.children:
+          Devuelve los elementos secundarios de este elemento.</p>
+
+        <p>Element.classList:
+          Devuelve un objeto DOMTokenList que contiene la lista de atributos de clase.</p>
+
+        <p>Element.className:
+          Es un DOMString que representa la clase del elemento.</p>
+
+        <p>Element.firstElementChild:
+          Devuelve el primer elemento secundario de este elemento.</p>
+
+        <p>Element.id:
+          Es un DOMString que representa el identificador del elemento.</p>
+
+        <p>Element.innerHTML:
+          Es un DOMString que representa el marcado del contenido del elemento.</p>
+
+        <p>Element.lastElementChild:
+          Devuelve el último elemento secundario de este elemento.</p>
+
+        <p>Element.nextElementSibling:
+          Es un elemento, el elemento inmediatamente posterior al dado en el árbol, o si no hay un nodo hermano.null</p>
+
+        <p>Element.outerHTML:
+          Es un DOMString que representa el marcado del elemento, incluido su contenido. Cuando se utiliza como setter,
+          reemplaza
+          el elemento con nodos analizados a partir de la cadena dada.</p>
+
+        <p>Element.previousElementSibling:
+          Es un elemento, el elemento inmediatamente anterior al dado en el árbol, o si no hay ningún elemento hermano
+          null.</p>
+
+        <p>Element.scrollTop:
+          Un número que representa el número de píxeles de la parte superior del documento se desplaza verticalmente.
+        </p>
+
+        <h2>Controladores de eventos</h2>
+
+        <p>Element.onfullscreenchange:
+          Un controlador de eventos para el evento fullscreenchange, que se envía cuando el elemento entra o sale del
+          modo de pantalla
+          completa.
+          Esto se puede usar para observar las transiciones esperadas correctas, pero también para observar los cambios
+          inesperados, como cuando la aplicación se ejecuta en segundo plano.</p>
+
+        <p>Element.onfullscreenerror:
+          Un controlador de eventos para el evento fullscreenerror, que se envía cuando se produce un error al intentar
+          cambiar al modo de
+          pantalla completa.</p>
+
+        <h2>Métodos</h2>
+
+        <p>
+          <em>
+            Al igual que las propiedades Element hereda metodos de su interfaz principal, Node, y por extensión, del
+            elemento primario de esa
+            interfaz,
+            EventTarget.
+          </em>
+        </p>
+
+        <h3>A continuación se nombraran algunos de los metodos</h3>
+
+        <p>
+          EventTarget.addEventListener():
+          Registra un controlador de eventos en un tipo de evento específico del elemento.
+        </p>
+
+        <p>
+          Element.after():
+          Inserta un conjunto de objetos Node o DOMString en la lista de hijos del elemento primario, justo después del
+          archivo.
+        </p>
+
+        <p>
+          Element.append():
+          Inserta un conjunto de objetos Node u objetos DOMString después del último elemento secundario.
+        </p>
+
+        <p>
+          Element.before():
+          Inserta un conjunto de objetos Node o DOMString en la lista de hijos del padre, justo antes del archivo.
+        </p>
+
+        <p>
+          Element.closest():
+          Devuelve el elemento que es el antepasado más cercano del elemento actual (o el elemento actual en sí) que
+          coincide con
+          los selectores dados en el parámetro.
+        </p>
+
+        <p>
+          Element.getAttribute():
+          Recupera el valor del atributo con nombre del nodo actual y lo devuelve como objeto.
+        </p>
+
+        <p>
+          Element.getBoundingClientRect():
+          Devuelve el tamaño de un elemento y su posición en relación con la ventana gráfica.
+        </p>
+
+        <p>
+          Element.getElementsByClassName():
+          Devuelve un archivo HTMLCollection activo que contiene todos los descendientes del elemento actual que poseen
+          la lista
+          de clases proporcionada en el parámetro.
+        </p>
+
+        <p>
+          Element.getElementsByTagName():
+          Devuelve una htmlcollection activa que contiene todos los elementos descendientes, de un nombre de etiqueta
+          determinado,
+          del elemento actual.
+        </p>
+
+        <p>
+          Element.hasAttribute():
+          Devuelve un valor booleano que indica si el elemento tiene el atributo especificado o no.
+        </p>
+
+        <p>
+          Element.insertAdjacentElement():
+          Inserta un nodo de elemento dado en una posición dada en relación con el elemento sobre el que se invoca.
+        </p>
+
+        <p>
+          Element.insertAdjacentHTML():
+          Analiza el texto como HTML o XML e inserta los nodos resultantes en el árbol en la posición dada.
+        </p>
+
+        <p>
+          Element.insertAdjacentText():
+          Inserta un nodo de texto dado en una posición determinada en relación con el elemento sobre el que se invoca.
+        </p>
+
+        <p>
+          Element.matches():
+          Devuelve un valor booleano que indica si la cadena selectora especificada seleccionará o no el elemento.
+        </p>
+
+        <p>
+          Element.prepend():
+          Inserta un conjunto de objetos Node u objetos DOMString antes del primer elemento secundario.
+        </p>
+
+        <p>
+          Element.querySelector():
+          Devuelve el primer nodo que coincide con la cadena selectora especificada en relación con el elemento.
+        </p>
+
+        <p>
+          Element.querySelectorAll():
+          Devuelve una NodeList de nodos que coinciden con la cadena selectora especificada en relación con el elemento.
+        </p>
+
+        <p>
+          Element.remove():
+          Quita el elemento de la lista de elementos secundarios de su elemento primario.
+        </p>
+
+        <p>
+          Element.removeAttribute():
+          Quita el atributo con nombre del nodo actual.
+        </p>
+
+        <p>
+          EventTarget.removeEventListener():
+          Quita un agente de escucha de eventos del elemento.
+        </p>
+
+        <p>
+          Element.replaceChildren():
+          Reemplaza los elementos secundarios existentes de un nodo por un nuevo conjunto especificado de elementos
+          secundarios.
+        </p>
+
+        <p>
+          Element.scrollTo():
+          Se desplaza a un conjunto particular de coordenadas dentro de un elemento determinado.
+        </p>
+
+        <p>
+          Element.setAttribute():
+          Establece el valor de un atributo con nombre del nodo actual.
+        </p>
+
+        <p>
+          Element.toggleAttribute():
+          Alterna un atributo booleano, quitándolo si está presente y agregándolo si no está presente, en el elemento
+          especificado.
+        </p>
+
+        <h2>Eventos</h2>
+
+        <h3>A continuación se nombraran algunos de los eventos mas usados</h3>
+
+        <p>
+          scroll:
+          Se activa cuando se ha desplazado la vista del documento o un elemento.
+        </p>
+
+        <p>
+          select:
+          Se activa cuando se ha seleccionado algún texto.
+        </p>
+
+        <p>
+          wheel:
+          Se activa cuando el usuario gira un botón de rueda en un dispositivo señalador (normalmente un ratón).
+        </p>
+
+        <p>
+          securitypolicyviolation:
+          Se activa cuando se infringe una política de seguridad de contenido.
+        </p>
+
+        <h3>Eventos del portapapeles</h3>
+
+        <p>
+          copy:
+          Se activa cuando el usuario inicia una acción de copia a través de la interfaz de usuario del navegador.
+        </p>
+
+        <p>
+          cut:
+          Se activa cuando el usuario inicia una acción de corte a través de la interfaz de usuario del navegador.
+        </p>
+
+        <p>
+          paste
+          Se activa cuando el usuario inicia una acción de pegado a través de la interfaz de usuario del navegador.
+        </p>
+
+        <h3>Eventos de enfoque</h3>
+
+        <p>
+          blur:
+          Se dispara cuando un elemento ha perdido el foco.
+        </p>
+
+        <p>
+          focus:
+          Se dispara cuando un elemento ha ganado enfoque.
+        </p>
+
+        <p>
+          focusin:
+          Se dispara cuando un elemento está a punto de ganar enfoque.
+        </p>
+
+        <p>
+          focusout:
+          Se dispara cuando un elemento está a punto de perder el foco.
+        </p>
+
+        <h3>Eventos del teclado</h3>
+
+        <p>
+          keydown:
+          Se activa cuando se presiona una tecla.
+        </p>
+
+        <p>
+          keypress:
+          Se activa cuando se presiona hacia abajo una tecla que produce un valor de carácter.
+        </p>
+
+        <p>
+          keyup:
+          Se activa cuando se suelta una clave.
+        </p>
+
+        <h3>Eventos de arrastrar y soltar</h3>
+
+        <p>
+          drag:
+          Se dispara cada pocos cientos de milisegundos mientras el usuario arrastra un elemento o una selección de
+          texto.
+        </p>
+
+        <p>
+          dragend:
+          Se activa cuando finaliza una operación de arrastre (soltando un botón del ratón o pulsando la tecla de
+          escape).
+        </p>
+
+        <p>
+          dragenter:
+          Se activa cuando un elemento arrastrado o una selección de texto entra en un destino de succión válido.
+        </p>
+
+        <p>
+          dragleave:
+          Se activa cuando un elemento arrastrado o una selección de texto deja un destino de entrega válido.
+        </p>
+
+        <p>
+          dragover:
+          Se activa cuando se arrastra un elemento o una selección de texto sobre un destino de entrega válido (cada
+          pocos cientos
+          de milisegundos).
+        </p>
+
+        <p>
+          dragstart:
+          Se activa cuando el usuario comienza a arrastrar un elemento o una selección de texto.
+        </p>
+
+        <p>
+          drop:
+          Se activa cuando se deja caer un elemento o una selección de texto en un destino de entrega válido.
+        </p>
+
+        <h3>Eventos del raton</h3>
+
+        <p>
+          auxclick:
+          Se activa cuando se ha presionado y liberado un botón de dispositivo señalador no primario (por ejemplo,
+          cualquier botón
+          del mouse que no sea el botón izquierdo) en un elemento.
+        </p>
+
+        <p>
+          click:
+          Se activa cuando se presiona y suelta un botón del dispositivo señalador (por ejemplo, el botón principal de
+          un mouse)
+          en un solo elemento.
+        </p>
+
+        <p>
+          dblclick:
+          Se activa cuando se hace clic dos veces en un botón de dispositivo señalador (por ejemplo, el botón principal
+          de un
+          mouse) en un solo elemento.
+        </p>
+
+        <p>
+          mousedown:
+          Se activa cuando se presiona un botón de dispositivo señalador en un elemento.
+        </p>
+
+        <p>
+          mouseenter:
+          Se activa cuando un dispositivo señalador (generalmente un mouse) se mueve sobre el elemento que tiene el
+          oyente
+          conectado.
+        </p>
+
+        <p>
+          mouseleave:
+          Se activa cuando el puntero de un dispositivo señalador (generalmente un mouse) se mueve fuera de un elemento
+          que tiene
+          el oyente conectado a él.
+        </p>
+
+        <p>
+          mousemove:
+          Se activa cuando un dispositivo señalador (generalmente un mouse) se mueve mientras está sobre un elemento.
+        </p>
+
+        <p>
+          mouseout:
+          Se activa cuando un dispositivo señalador (generalmente un mouse) se mueve fuera del elemento al que está
+          conectado el
+          oyente o de uno de sus hijos.
+        </p>
+
+        <p>
+          mouseover:
+          Se activa cuando un dispositivo señalador se mueve sobre el elemento al que está conectado el oyente o sobre
+          uno de sus
+          hijos.
+        </p>
+
+        <p>
+          mouseup:
+          Se activa cuando se suelta un botón de dispositivo señalador en un elemento.
+        </p>
+
+        <p>
+          webkitmouseforcechanged:
+          Se dispara cada vez que la cantidad de presión cambia en la pantalla táctil del trackpad.
+        </p>
+
+        <p>
+          webkitmouseforcedown:
+          Se dispara después del evento de ratón hacia abajo tan pronto como se haya aplicado suficiente presión para
+          calificar
+          como un "clic de fuerza".
+        </p>
+
+        <p>
+          webkitmouseforcewillbegin:
+          Se ha disparado antes del evento mousedown.
+        </p>
+
+        <p>
+          webkitmouseforceup:
+          Se dispara después del evento webkitmouseforcedown tan pronto como la presión se ha reducido lo suficiente
+          como para
+          finalizar el "clic de fuerza".
+        </p>
+
+        <h3>Eventos tactiles</h3>
+
+        <p>
+          touchcancel:
+          Se activa cuando uno o más puntos de contacto se han interrumpido de una manera específica de la
+          implementación (por
+          ejemplo, se crean demasiados puntos de contacto).
+        </p>
+
+        <p>
+          touchend:
+          Se dispara cuando se retiran uno o más puntos de contacto de la superficie táctil.
+        </p>
+
+        <p>
+          touchmove:
+          Se dispara cuando uno o más puntos de contacto se mueven a lo largo de la superficie táctil.
+        </p>
+
+        <p>
+          touchstart:
+          Se dispara cuando se colocan uno o más puntos de contacto en la superficie táctil.
+        </p>
+
+      </article>
+    </section>
+
+    <section class="main-section" id="Referencia">
+      <header>Referencia</header>
+      <article>
+        <ul>
+          <li>
+            Toda la documentación la puedes encontrar en esta página
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model" target="_blank">MDN</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+</body>
+
+</html>
