@@ -1,1 +1,1 @@
-# Documentación Tecnica
+# Documentación Técnica
